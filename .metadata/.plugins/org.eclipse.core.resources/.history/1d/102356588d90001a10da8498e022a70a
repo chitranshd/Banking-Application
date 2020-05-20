@@ -1,0 +1,5 @@
+package com.example.fundtransfer.bean;
+
+public class ExceptionHandler {
+
+}

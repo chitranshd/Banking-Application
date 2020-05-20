@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;FundTransfer.java&apos; to &apos;account-microservice/src/main/java/com.example.account.bean&apos;&#x0D;&#x0A;- Original project: &apos;Fund-transfer-microservice&apos;&#x0D;&#x0A;- Destination element: &apos;account-microservice/src/main/java/com.example.account.bean&apos;&#x0D;&#x0A;- Original element: &apos;com.example.fundtransfer.bean.FundTransfer.java&apos;" description="Copy compilation unit" destination="=account-microservice/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.example.account.bean" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.example.fundtransfer.bean{FundTransfer.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1589259419563" units="1" version="1.0"/>
+</session>

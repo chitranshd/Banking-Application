@@ -1,0 +1,28 @@
+server:
+  port: 9001
+
+ 
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8581/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+
+ 
+
+spring:
+  application:
+    name: account-microservice
+
+ 
+
+logging:
+  level:
+    com.example.account: DEBUG

@@ -1,0 +1,37 @@
+<div class="jumbotron">
+<div class="container">
+<div class="col-md-6 offset-md-3">
+<h2>Please Enter the Following Credentials</h2>
+<form [formGroup]="adminForm" (ngSubmit)="checkAdminLogin()">
+<div class="form-group">
+<label class="asterisk">Username</label>
+<input  type="text"  formControlName="username"  class="form-control" [ngClass]="{'is-invalid': submitted && f.username.errors}">
+<div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+<div *ngIf="f.username.errors.required">Username is required</div>
+<div *ngIf="f.username.errors.pattern">Username should only contain letters</div>
+                        
+</div>
+</div>
+                  
+<div class="form-group">
+<label class="asterisk">Password</label>
+<show-hide-password size="md" btnStyle="light" [btnOutline]="false">
+<input  type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" /> 
+<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+<div *ngIf="f.password.errors.required">Password is required</div>
+<div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+</div>
+</show-hide-password>
+</div>
+              
+  <div class="form-group">
+  <button class="btn btn-primary" value="Login" [disabled]="loading">Login</button>
+  </div>
+</form>
+
+</div>
+</div>
+</div>
+
+
+  

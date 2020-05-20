@@ -1,0 +1,10 @@
+package com.example.fundtransfer.exception;
+
+public class LowOnBalanceException extends RuntimeException {
+
+	private String message;
+
+	public LowOnBalanceException(String message) {
+		this.message=message;
+	}
+}

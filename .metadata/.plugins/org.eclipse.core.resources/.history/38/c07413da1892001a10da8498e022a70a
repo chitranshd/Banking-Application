@@ -1,0 +1,61 @@
+package com.example.account.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.example.account.bean.Account;
+import com.example.account.bean.Customer;
+import com.example.account.service.AccountService;
+
+@RestController
+@RequestMapping(value="/account")
+public class AccountController {
+
+@Autowired
+AccountService service;
+@Autowired
+RestTemplate restTemplate;
+
+  final String CUSTOMER_URL="http://localhost:9000/customer/getcustomer";
+
+@PostMapping(value="/addaccount/{username}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+public Account saveAccount(@PathVariable String username,@RequestBody Account account) {
+
+	
+	Customer customer=restTemplate.getForObject(CUSTOMER_URL+'/'+username, Customer.class);
+	
+	System.out.println(customer);
+
+	account.setAccountNo(service.generateAccountNumber());
+	account.setOpeningBalance(1000);
+	account.setCustomer(customer);
+	return service.addAccount(account);
+}
+
+@RequestMapping(value="/update",method = RequestMethod.POST)
+	public Account update(@RequestBody Account account) {
+	return service.updateAccount(account);
+}
+
+@GetMapping(value="/getaccount/{accountNo}")
+public Account getAccountNumber(@PathVariable String accountNo) {
+	return service.getAccount(accountNo);
+}
+
+@GetMapping(value="allaccounts")
+public List<Account> getAccounts(){
+	return service.getAccounts();
+}
+
+}

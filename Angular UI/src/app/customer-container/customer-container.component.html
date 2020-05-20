@@ -1,0 +1,36 @@
+
+ 
+<div class="alignright">
+<button class="btn btn-primary" value="Logout" (click)="logout()">Logout</button>
+</div>
+
+<div class="alignleft" >
+<h5 style="color:lightblue;">Welcome {{customerName}}</h5>
+</div>
+  
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/funds']">Fund Transfer</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/update-address']">Change Address</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/update-mobile']">Change Mobile Number</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/update-password']">Change Password</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/account']">Open Account</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/list-account']">Show My Accounts</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/custprofile']">View Profile</a>
+  </li>
+</ul>
+<img src="assets/img/Business-Internet-Banking.jpg" height="512" width="1356" alt="Bank image">
+<router-outlet></router-outlet>

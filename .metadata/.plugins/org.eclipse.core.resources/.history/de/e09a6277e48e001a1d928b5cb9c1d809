@@ -1,0 +1,5 @@
+package com.example.account.bean;
+
+public class Account {
+
+}

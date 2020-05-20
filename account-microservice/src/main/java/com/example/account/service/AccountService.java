@@ -1,0 +1,62 @@
+package com.example.account.service;
+
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.example.account.bean.Account;
+import com.example.account.bean.Customer;
+import com.example.account.dao.AccountDao;
+
+@Service
+public class AccountService {
+
+@Autowired
+AccountDao dao;
+
+@Autowired
+RestTemplate restTemplate;
+
+	
+public Account addAccount(Account account) {
+	return dao.save(account);
+}
+
+public Account getAccount(String accountNo) {
+	return dao.getAccountByaccountNo(accountNo);
+}
+
+public String generateAccountNumber() {
+Random rnd = new Random();
+int number = rnd.nextInt(9999);
+return String.format("%06d", number);
+}
+
+public List<Account> getAccountByUsername(String username){
+	final String CUSTOMER_URL="http://localhost:9000/customer/getcustomer";
+
+	Customer customer=restTemplate.getForObject(CUSTOMER_URL+'/'+username, Customer.class);
+	return dao.findAll().stream().filter(x->x.getCustomer().getUsername().equals(customer.getUsername())).collect(Collectors.toList());
+}
+
+public List<Account> getAccountByCustomername(String customerName){
+	
+	final String CUSTOMER_NAME_URL="http://localhost:9000/customer/getcustomername";
+	Customer customer=restTemplate.getForObject(CUSTOMER_NAME_URL+'/'+customerName, Customer.class);
+	return dao.findAll().stream().filter(x->x.getCustomer().getCustomerName().equals(customer.getCustomerName())).collect(Collectors.toList());
+}
+
+
+public Account updateAccount(Account account) {
+return dao.save(account);
+}
+
+public List<Account> getAccounts(){
+	return dao.findAll();
+}
+
+}

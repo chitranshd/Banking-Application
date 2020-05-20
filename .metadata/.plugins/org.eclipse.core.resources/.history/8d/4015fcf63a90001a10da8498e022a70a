@@ -1,0 +1,9 @@
+package com.example.fundtransfer.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.fundtransfer.bean.FundTransfer;
+
+public interface FundTransferDao extends JpaRepository<FundTransfer,Integer> {
+
+}

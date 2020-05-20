@@ -1,0 +1,24 @@
+<div class="jumbotron">
+  <div class="container">
+  <div class="col-md-6 offset-md-3">
+  <form [formGroup]="searchForm" (ngSubmit)="search()">
+
+
+  <div class="form-group">
+  <label class="asterisk">Enter Customer Name</label>
+  <input  type="text"  formControlName="username"  class="form-control" [ngClass]="{'is-invalid': submitted && f.username.errors}">
+  <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+  <div *ngIf="f.username.errors.required">Customer Name is required</div>
+                          
+  </div>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary" value="Search" (click)="search()">Search</button>
+  </div>
+
+  </form>
+  </div>
+  </div>
+  </div>
+  

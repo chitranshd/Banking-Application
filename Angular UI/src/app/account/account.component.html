@@ -1,0 +1,33 @@
+<div class="jumbotron">
+  <div class="container">
+  <div class="col-md-6 offset-md-3">
+  <form [formGroup]="accountForm" (ngSubmit)="openAccount()">
+
+    <div class="form-group">
+      <label class="asterisk">Select Account Type</label>
+      <select class="custom-select" formControlName="accountType" [ngClass]="{'is-invalid': submitted && f.accountType.errors}">
+      <option value="" disabled>Choose your Account Type</option>
+      <option *ngFor="let a of accountType">{{a}}</option>
+      </select>
+      <div *ngIf="submitted && f.accountType.errors" class="invalid-feedback">
+      <div *ngIf="submitted && f.accountType.errors.required">This is a Mandatory Field</div>
+      </div>
+      </div>
+      
+      <div class="form-group">
+      <label class="asterisk">Enter Opening Balance</label>
+      <input type="text" formControlName="openingBalance" class="form-control" [ngClass]="{'is-invalid': submitted && f.openingBalance.errors}">
+      <div *ngIf="submitted && f.openingBalance.errors" class="invalid-feedback">
+      <div *ngIf="submitted && f.openingBalance.errors.required">This is a Mandatory field</div>
+      <div *ngIf="submitted && f.openingBalance.errors.minlength">Amount should not be less than 3 digits</div> 
+      </div>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary" value="Open Account" (click)="openAccount()">Open Account</button>
+      </div>
+
+  </form>
+  </div>
+  </div>
+</div>

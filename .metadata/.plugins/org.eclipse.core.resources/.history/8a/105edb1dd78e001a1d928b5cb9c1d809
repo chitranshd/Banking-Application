@@ -1,0 +1,26 @@
+package com.example.customer.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.customer.bean.Customer;
+import com.example.customer.dao.CustomerDao;
+
+public class CustomerService {
+
+	@Autowired
+	CustomerDao dao;
+	
+	public Customer addCustomer(Customer customer) {
+	return dao.save(customer);
+	}
+	
+	public Customer findCustomer(String emailId) {
+	return dao.findByEmailId(emailId);
+	}
+	
+	public List<Customer> getCustomers(){
+		return dao.findAll();
+	}
+}

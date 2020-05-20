@@ -1,0 +1,38 @@
+package com.example.account.service;
+
+import java.util.List;
+import java.util.Random;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.account.bean.Account;
+import com.example.account.dao.AccountDao;
+
+@Service
+public class AccountService {
+
+@Autowired
+AccountDao dao;
+	
+public Account addAccount(Account account) {
+	return dao.save(account);
+}
+
+public Account getAccount(String accountNo) {
+	return dao.getAccountByaccountNo(accountNo);
+}
+
+public String generateAccountNumber() {
+	 Random rnd = new Random();
+	    int number = rnd.nextInt(9999);
+
+	    // this will convert any number sequence into 6 character.
+	    return String.format("%06d", number);
+}
+
+public List<Account> getAccounts(){
+	return dao.findAll();
+}
+
+}

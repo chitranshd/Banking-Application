@@ -1,0 +1,13 @@
+
+
+marquee {
+ 
+  font:bolder ;
+  animation-name: example;
+  animation-duration: 20s;
+}
+
+@keyframes example {
+  from {color:blue;}
+  to {color: violet;}
+}

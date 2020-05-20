@@ -1,0 +1,74 @@
+<div class="jumbotron">
+<div class="container">
+<div class="col-md-6 offset-md-3">
+<form [formGroup]="InfoForm" (ngSubmit)="addCustomer()">
+
+<div class="form-group">
+<label class="asterisk">Enter Name</label>
+<input type="text" formControlName="customerName" class="form-control" [ngClass]="{'is-invalid': submitted && f.customerName.errors}">
+<div *ngIf="submitted && f.customerName.errors" class="invalid-feedback">
+<div *ngIf="submitted && f.customerName.errors.required">Customer Name is Mandatory</div>  
+</div>
+</div>
+
+<div class="form-group">
+  <label class="asterisk">Enter Email Address</label>
+  <input type="email" formControlName="emailId" class="form-control" [ngClass]="{'is-invalid': submitted && f.emailId.errors}">
+  <div *ngIf="submitted && f.emailId.errors" class="invalid-feedback">
+  <div *ngIf="submitted && f.emailId.errors.required">Email Address is Mandatory</div>
+  <div *ngIf="submitted && f.emailId.errors.email">Enter valid Email address</div>  
+  </div>
+  </div>   
+
+  <div class="form-group">
+    <label class="asterisk">Enter Mobile Number</label>
+    <input type="text" formControlName="mobileNumber" class="form-control" [ngClass]="{'is-invalid': submitted && f.mobileNumber.errors}">
+    <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">
+    <div *ngIf="submitted && f.mobileNumber.errors.required">Mobile Number is Mandatory</div>
+    <div *ngIf="submitted && f.mobileNumber.errors.pattern">Mobile number should contain ten digits</div>  
+    </div>
+    </div>
+
+<div class="form-group">
+<label class="asterisk">Enter address</label>
+<input type="text" formControlName="address" class="form-control" [ngClass]="{'is-invalid': submitted && f.address.errors}">
+<div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+<div *ngIf="submitted && f.address.errors.required">Address is Mandatory</div>  
+</div>
+</div>
+  
+<div class="form-group">
+  <label class="asterisk">Enter Pancard Number</label>
+  <input type="text" formControlName="pancard" class="form-control" [ngClass]="{'is-invalid': submitted && f.pancard.errors}">
+  <div *ngIf="submitted && f.pancard.errors" class="invalid-feedback">
+  <div *ngIf="submitted && f.pancard.errors.required">Pancard Number is Mandatory</div>  
+  <div *ngIf="submitted && f.pancard.errors.pattern">Please check Your Input Number</div>  
+  </div>
+  </div>
+        
+  <div class="form-group">
+    <label class="asterisk">Set Your Username</label>
+    <input type="text" formControlName="username" class="form-control" [ngClass]="{'is-invalid': submitted && f.username.errors}">
+    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+    <div *ngIf="submitted && f.username.errors.required">Username is Mandatory</div>
+    <div *ngIf="submitted && f.username.errors.pattern">No special characters allowed</div>    
+    </div>
+    </div>
+
+    <div class="form-group">
+      <label class="asterisk">Set Your First Password</label>
+      <input type="text" formControlName="password" class="form-control" [ngClass]="{'is-invalid': submitted && f.password.errors}">
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+      <div *ngIf="submitted && f.password.errors.required">Password is Mandatory</div>  
+      <div *ngIf="submitted && f.password.errors.pattern">Password shall be between 6 to 10 characters</div>  
+      </div>
+      </div>
+        
+    <div class="form-group">
+    <button class="btn btn-primary" type="button" value="Register"  (click)="addCustomer()">Register</button>
+    </div>
+
+</form>
+</div>
+</div>
+</div>

@@ -1,0 +1,21 @@
+<table class="table table-hover">
+  <tr class="bg-active">
+    <th>Transaction ID</th>
+    <th>Account Number</th>
+    <th>Transfer Amount</th>
+    <th>Transaction Type</th>
+    <th>Transaction Date</th>
+    <th>Customer Name</th>
+  </tr>
+
+  <tr *ngFor="let f of fundTransfer" class="bg-info">
+    <td>{{f.fundTransferId}}</td>
+    <td>{{f.accountNumber}}</td> 
+    <td>{{f.tranferAmount}}</td> 
+    <td>{{f.transactionType}}</td> 
+    <td>{{f.transactionDate}}</td>
+    <td>{{f.account.customer.customerName}}</td>
+  </tr>
+  </table>
+
+  <a [routerLink]="['/list-account']">View Your Accounts</a>

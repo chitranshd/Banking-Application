@@ -1,0 +1,32 @@
+<div class="jumbotron">
+  <div class="container">
+  <div class="col-md-6 offset-md-3">
+  <form [formGroup]="mobileForm" (ngSubmit)="update()">
+
+  <div class="form-group">
+  <label class="asterisk">Enter Your Old Mobile Number</label>
+  <input type="text" formControlName="oldmobile" class="form-control" [ngClass]="{'is-invalid':submitted && f.oldmobile.errors}">
+  <div *ngIf="submitted && f.oldmobile.errors" class="invalid-feedback">
+  <div *ngIf="submitted && f.oldmobile.errors.required">This is a required field</div>
+  <div *ngIf="submitted && f.oldmobile.errors.pattern">Mobile Number should not be less than 10 digits</div>
+  </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="asterisk">Enter Your New Mobile Number</label>
+    <input type="text" formControlName="newmobile" class="form-control" [ngClass]="{'is-invalid':submitted && f.newmobile.errors}">
+    <div *ngIf="submitted && f.newmobile.errors" class="invalid-feedback">
+    <div *ngIf="submitted && f.newmobile.errors.required">This is a required field</div>
+    <div *ngIf="submitted && f.newmobile.errors.pattern">Mobile Number should not be less than 10 digits</div>
+    </div>
+  </div>
+  
+  <div class="form-group">  
+  <button class="btn btn-primary" value="Submit" (click)="update()">Submit</button>
+  </div>
+  </form>
+  
+  </div>
+  </div>
+  </div>
+  

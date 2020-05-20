@@ -1,0 +1,5 @@
+package com.example.fundtransfer.exception;
+
+public class ExceptionHandler {
+
+}

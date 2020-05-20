@@ -1,0 +1,52 @@
+package com.example.fundtransfer.bean;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+
+@NoArgsConstructor
+@ToString
+@Entity
+public class FundTransfer {
+	
+public FundTransfer(String accountNumber, double tranfer_amount, String transactionType, Date transaction_Date,
+			Account account) {
+		super();
+		this.accountNumber = accountNumber;
+		this.tranfer_amount = tranfer_amount;
+		this.transactionType = transactionType;
+		this.transaction_Date = transaction_Date;
+		this.account = account;
+	}
+
+
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
+private Integer fundTransferId;
+
+private String accountNumber;
+
+private double tranfer_amount;
+private String transactionType;
+Date transaction_Date;
+
+
+@ManyToOne
+@JoinColumn(name = "accountId")
+private Account account;
+
+}
